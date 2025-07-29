@@ -1,0 +1,15 @@
+{
+    "title": "小鱼币币机",
+    "description": "小鱼币币机频道",
+    "icon": "fishbbg",
+    "root": true,
+    "pages": [
+      "---介绍---",
+      "index",
+      "aboutme",
+      "---视频---",
+      "videos",
+      "---其他---",
+      "exchange"
+    ]
+  }
