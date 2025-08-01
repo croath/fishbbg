@@ -27,9 +27,5 @@ export const baseOptions: BaseLayoutProps = {
       url: 'https://www.youtube.com/@fishbbg?sub_confirmation=1',
       external: true,
     },
-  ],
-  // 禁用搜索功能
-  search: {
-    enabled: false,
-  },
+  ]
 };
