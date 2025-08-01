@@ -28,4 +28,8 @@ export const baseOptions: BaseLayoutProps = {
       external: true,
     },
   ],
+  // 禁用搜索功能
+  search: {
+    enabled: false,
+  },
 };
