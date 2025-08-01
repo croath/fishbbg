@@ -1,6 +1,5 @@
 {
   "title": "全部视频",
   "icon": "fishbbg",
-  "pages": ["index"],
   "defaultOpen": true
 }
