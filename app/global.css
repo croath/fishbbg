@@ -1,3 +1,37 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
+
+/* 文本截断工具类 */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* YouTube 按钮样式 - 排除个人信息卡片中的图标 */
+section a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"],
+nav a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"] {
+  background: #dc2626 !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+section a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"]:hover,
+nav a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"]:hover {
+  background: #b91c1c !important;
+}
+
+section a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"]::before,
+nav a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"]::before {
+  content: "▶" !important;
+  font-size: 14px !important;
+}

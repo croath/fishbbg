@@ -17,5 +17,15 @@ export const baseOptions: BaseLayoutProps = {
     ),
   },
   // see https://fumadocs.dev/docs/ui/navigation/links
-  links: [],
+  links: [
+    {
+      text: '所有内容',
+      url: '/web3',
+    },
+    {
+      text: '关注 YouTube',
+      url: 'https://www.youtube.com/@fishbbg?sub_confirmation=1',
+      external: true,
+    },
+  ],
 };
