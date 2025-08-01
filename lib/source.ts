@@ -5,5 +5,5 @@ import { loader } from 'fumadocs-core/source';
 export const source = loader({
   // it assigns a URL to your pages
   baseUrl: '/web3',
-  source: docs.toFumadocsSource(),
+  source: docs.toFumadocsSource()
 });

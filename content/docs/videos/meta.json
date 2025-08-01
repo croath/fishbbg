@@ -1,5 +1,11 @@
 {
   "title": "全部视频",
-  "icon": "fishbbg",
-  "defaultOpen": true
+  "icon": "fishbbg", 
+  "defaultOpen": true,
+  "pages": [
+    "what-is-solana-darkpool",
+    "what-is-stablecoin",
+    "tornado-cash-roman-storm-case",
+    "kelly-criterion"
+  ]
 }
