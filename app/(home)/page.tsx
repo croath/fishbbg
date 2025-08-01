@@ -5,6 +5,7 @@ import { FaYoutube, FaTelegram, FaDiscord, FaEnvelope } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { OrganizationStructuredData } from '@/components/StructuredData';
 import CopyEmailButton from '@/components/CopyEmailButton';
+import type { Metadata } from 'next';
 
 // 获取所有视频
 async function getVideos() {
@@ -22,6 +23,51 @@ async function getVideos() {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   
   return videos;
+}
+
+// 生成首页的动态 metadata
+export async function generateMetadata(): Promise<Metadata> {
+  const videos = await getVideos();
+  const latestVideo = videos[0];
+  
+  const description = latestVideo 
+    ? `最新视频：${latestVideo.title}。8年区块链从业者分享Web3见闻、DeFi分析与投资策略。探索加密世界，发现真实价值。`
+    : '8年区块链从业者分享Web3见闻、DeFi分析与投资策略。探索加密世界，发现真实价值。';
+  
+  const imageUrl = latestVideo?.image || '/fishbbg.svg';
+
+  return {
+    title: '小鱼币币机 | 专业Web3区块链分析与投资策略',
+    description,
+    keywords: 'Web3,区块链,DeFi,加密货币,比特币,以太坊,数字资产,投资策略,币圈,小鱼币币机,视频教程',
+    alternates: {
+      canonical: 'https://fishbbg.com',
+    },
+    openGraph: {
+      title: '小鱼币币机 | 专业Web3区块链分析与投资策略',
+      description,
+      url: 'https://fishbbg.com',
+      siteName: '小鱼币币机',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: latestVideo ? `最新视频：${latestVideo.title}` : '小鱼币币机 - Web3区块链内容频道',
+        },
+      ],
+      locale: 'zh_CN',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@cr0ath',
+      creator: '@cr0ath',
+      title: '小鱼币币机 | 专业Web3区块链分析与投资策略',
+      description,
+      images: [imageUrl],
+    },
+  };
 }
 
 export default async function HomePage() {

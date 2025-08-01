@@ -159,10 +159,10 @@ const KellySimulation = () => {
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-4">凯利公式策略对比模拟</h1>
-        <div className="bg-blue-50 p-4 rounded-lg mb-4">
-          <h2 className="text-lg font-semibold mb-2">游戏设定：</h2>
-          <ul className="list-disc list-inside space-y-1 text-sm">
+        <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">凯利公式策略对比模拟</h1>
+        <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg mb-4">
+          <h2 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">游戏设定：</h2>
+          <ul className="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
             <li>100个玩家，每人初始资金1000元</li>
             <li>进行100轮游戏</li>
             <li>每轮胜率60%，1赔1</li>
@@ -182,7 +182,7 @@ const KellySimulation = () => {
       {simulationData.length > 0 && (
         <>
           <div className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">资金变化趋势（平均值）</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">资金变化趋势（平均值）</h2>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart data={simulationData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -216,7 +216,7 @@ const KellySimulation = () => {
           </div>
 
           <div className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">资金变化趋势（中位数）</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">资金变化趋势（中位数）</h2>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart data={simulationData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -250,7 +250,7 @@ const KellySimulation = () => {
           </div>
 
           <div className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">最终结果对比</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">最终结果对比</h2>
             <ResponsiveContainer width="100%" height={400}>
               <BarChart data={finalResults}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -265,7 +265,7 @@ const KellySimulation = () => {
           </div>
 
           <div className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">破产人数对比</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">破产人数对比</h2>
             <ResponsiveContainer width="100%" height={400}>
               <BarChart data={finalResults}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -280,45 +280,45 @@ const KellySimulation = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {finalResults.map((result, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-lg border">
-                <h3 className="text-xl font-semibold mb-4 text-center">{result.strategy}</h3>
-                <div className="space-y-2 text-sm">
+              <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold mb-4 text-center text-gray-900 dark:text-gray-100">{result.strategy}</h3>
+                <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                   <div className="flex justify-between">
                     <span>平均资金:</span>
-                    <span className="font-semibold">${result.average}</span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">${result.average}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>中位数资金:</span>
-                    <span className="font-semibold">${result.median}</span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">${result.median}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>最高资金:</span>
-                    <span className="font-semibold text-green-600">${result.max}</span>
+                    <span className="font-semibold text-green-600 dark:text-green-400">${result.max}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>最低资金:</span>
-                    <span className="font-semibold text-red-600">${result.min}</span>
+                    <span className="font-semibold text-red-600 dark:text-red-400">${result.min}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>破产人数:</span>
-                    <span className="font-semibold text-red-600">{result.bankruptCount}</span>
+                    <span className="font-semibold text-red-600 dark:text-red-400">{result.bankruptCount}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>万元户数:</span>
-                    <span className="font-semibold text-green-600">{result.millionaireCount}</span>
+                    <span className="font-semibold text-green-600 dark:text-green-400">{result.millionaireCount}</span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 bg-yellow-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold mb-4">结果分析：</h3>
-            <div className="space-y-3 text-sm">
-              <p><strong>凯利策略(20%)：</strong>在长期来看通常能实现最优的增长率，平均表现最好，但波动相对较大。</p>
-              <p><strong>保守策略(10%)：</strong>增长较慢但稳定，破产风险最小，适合风险厌恶型投资者。</p>
-              <p><strong>激进策略(50%)：</strong>虽然有机会获得最高收益，但破产风险极高，大部分玩家会损失惨重。</p>
-              <p className="text-red-600 font-semibold">注意：这只是一次模拟结果，实际情况可能会有所不同。点击"重新模拟"可以看到不同的结果。</p>
+          <div className="mt-8 bg-yellow-50 dark:bg-yellow-900/30 p-6 rounded-lg">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">结果分析：</h3>
+            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <p><strong className="text-gray-900 dark:text-gray-100">凯利策略(20%)：</strong>在长期来看通常能实现最优的增长率，平均表现最好，但波动相对较大。</p>
+              <p><strong className="text-gray-900 dark:text-gray-100">保守策略(10%)：</strong>增长较慢但稳定，破产风险最小，适合风险厌恶型投资者。</p>
+              <p><strong className="text-gray-900 dark:text-gray-100">激进策略(50%)：</strong>虽然有机会获得最高收益，但破产风险极高，大部分玩家会损失惨重。</p>
+              <p className="text-red-600 dark:text-red-400 font-semibold">注意：这只是一次模拟结果，实际情况可能会有所不同。点击"重新模拟"可以看到不同的结果。</p>
             </div>
           </div>
         </>

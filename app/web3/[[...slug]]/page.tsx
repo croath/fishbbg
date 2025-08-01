@@ -45,8 +45,44 @@ export async function generateMetadata(props: {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
+  const pageUrl = `https://fishbbg.com${page.url}`;
+  const imageUrl = page.data.image || '/fishbbg.svg';
+  const pageTitle = page.data.title || '小鱼币币机';
+  const pageDescription = page.data.description || '8年区块链从业者分享Web3见闻、DeFi分析与投资策略';
+  const keywords = page.data.keywords || 'Web3,区块链,DeFi,加密货币,小鱼币币机';
+
   return {
-    title: page.data.title,
-    description: page.data.description,
+    title: pageTitle,
+    description: pageDescription,
+    keywords: keywords,
+    alternates: {
+      canonical: pageUrl,
+    },
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: pageUrl,
+      siteName: '小鱼币币机',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: pageTitle,
+        },
+      ],
+      locale: 'zh_CN',
+      type: 'article',
+      publishedTime: page.data.date ? new Date(page.data.date).toISOString() : undefined,
+      authors: ['小鱼·币币机'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@cr0ath',
+      creator: '@cr0ath',
+      title: pageTitle,
+      description: pageDescription,
+      images: [imageUrl],
+    },
   };
 }

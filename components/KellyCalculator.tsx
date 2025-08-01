@@ -32,38 +32,19 @@ export function KellyCalculator() {
   };
 
   return (
-    <div style={{
-      border: '2px solid #e2e8f0',
-      borderRadius: '12px',
-      padding: '24px',
-      margin: '20px 0',
-      background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
-      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-    }}>
-      <h3 style={{ 
-        marginTop: 0, 
-        marginBottom: '20px', 
-        color: '#1e293b',
-        textAlign: 'center',
-        fontSize: '1.5rem'
-      }}>
+    <div className="border-2 border-gray-300 dark:border-gray-600 rounded-xl p-6 my-5 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 shadow-lg">
+      <h3 className="mt-0 mb-5 text-gray-800 dark:text-gray-100 text-center text-2xl font-semibold">
         🎯 凯利公式计算器
       </h3>
       
-      <div style={{ display: 'grid', gap: '20px', marginBottom: '20px' }}>
+      <div className="grid gap-5 mb-5">
         {/* 胜率控制区域 */}
         <div>
-          <label style={{ 
-            display: 'block', 
-            marginBottom: '12px', 
-            fontWeight: '600',
-            color: '#374151',
-            fontSize: '16px'
-          }}>
+          <label className="block mb-3 font-semibold text-gray-700 dark:text-gray-300 text-base">
             📊 胜率 (Win Rate): {winRate.toFixed(1)}%
           </label>
           
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '8px' }}>
+          <div className="flex gap-3 items-center mb-2">
             <input
               type="number"
               min="0"
@@ -71,19 +52,10 @@ export function KellyCalculator() {
               step="0.1"
               value={winRate}
               onChange={(e) => handleWinRateChange(Number(e.target.value))}
-              style={{
-                width: '80px',
-                padding: '8px 12px',
-                border: '2px solid #e2e8f0',
-                borderRadius: '6px',
-                fontSize: '14px',
-                fontWeight: '600',
-                textAlign: 'center',
-                outline: 'none'
-              }}
+              className="w-20 px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md text-sm font-semibold text-center bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <span style={{ fontSize: '14px', color: '#6b7280', fontWeight: '500' }}>%</span>
-            <div style={{ flex: 1, marginLeft: '12px' }}>
+            <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">%</span>
+            <div className="flex-1 ml-3">
               <input
                 type="range"
                 min="1"
@@ -91,54 +63,32 @@ export function KellyCalculator() {
                 step="0.1"
                 value={winRate}
                 onChange={(e) => handleWinRateChange(Number(e.target.value))}
-                style={{
-                  width: '100%',
-                  height: '8px',
-                  borderRadius: '4px',
-                  background: '#e2e8f0',
-                  outline: 'none',
-                  cursor: 'pointer'
-                }}
+                className="w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-md appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
-          <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '4px' }}>
+          <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
             滑块范围: 1-99% | 输入框范围: 0-100%
           </div>
         </div>
         
         {/* 盈亏比控制区域 */}
         <div>
-          <label style={{ 
-            display: 'block', 
-            marginBottom: '12px', 
-            fontWeight: '600',
-            color: '#374151',
-            fontSize: '16px'
-          }}>
+          <label className="block mb-3 font-semibold text-gray-700 dark:text-gray-300 text-base">
             💰 盈亏比 (Win/Loss Ratio): {winLossRatio.toFixed(2)}
           </label>
           
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '8px' }}>
+          <div className="flex gap-3 items-center mb-2">
             <input
               type="number"
               min="0.1"
               step="0.1"
               value={winLossRatio}
               onChange={(e) => handleWinLossRatioChange(Number(e.target.value))}
-              style={{
-                width: '80px',
-                padding: '8px 12px',
-                border: '2px solid #e2e8f0',
-                borderRadius: '6px',
-                fontSize: '14px',
-                fontWeight: '600',
-                textAlign: 'center',
-                outline: 'none'
-              }}
+              className="w-20 px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md text-sm font-semibold text-center bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <span style={{ fontSize: '14px', color: '#6b7280', fontWeight: '500' }}>:1</span>
-            <div style={{ flex: 1, marginLeft: '12px' }}>
+            <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">:1</span>
+            <div className="flex-1 ml-3">
               <input
                 type="range"
                 min="0.5"
@@ -146,106 +96,62 @@ export function KellyCalculator() {
                 step="0.1"
                 value={winLossRatio}
                 onChange={(e) => handleWinLossRatioChange(Number(e.target.value))}
-                style={{
-                  width: '100%',
-                  height: '8px',
-                  borderRadius: '4px',
-                  background: '#e2e8f0',
-                  outline: 'none',
-                  cursor: 'pointer'
-                }}
+                className="w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-md appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
-          <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '4px' }}>
+          <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
             滑块范围: 0.5-10 | 输入框范围: 0.1+
           </div>
         </div>
       </div>
       
-      <div style={{ 
-        display: 'flex', 
-        gap: '12px', 
-        marginBottom: '20px',
-        justifyContent: 'center' 
-      }}>
+      <div className="flex gap-3 mb-5 justify-center">
         <button
           onClick={calculateKelly}
-          style={{
-            padding: '12px 24px',
-            backgroundColor: '#3b82f6',
-            color: 'white',
-            border: 'none',
-            borderRadius: '8px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            fontSize: '14px',
-            transition: 'background-color 0.2s'
-          }}
-          onMouseOver={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#2563eb'}
-          onMouseOut={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#3b82f6'}
+          className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white border-none rounded-lg font-semibold cursor-pointer text-sm transition-colors duration-200"
         >
           🧮 计算凯利比例
         </button>
         
         <button
           onClick={resetValues}
-          style={{
-            padding: '12px 24px',
-            backgroundColor: '#6b7280',
-            color: 'white',
-            border: 'none',
-            borderRadius: '8px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            fontSize: '14px',
-            transition: 'background-color 0.2s'
-          }}
-          onMouseOver={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#4b5563'}
-          onMouseOut={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#6b7280'}
+          className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white border-none rounded-lg font-semibold cursor-pointer text-sm transition-colors duration-200"
         >
           🔄 重置
         </button>
       </div>
       
       {isCalculated && (
-        <div style={{
-          padding: '20px',
-          backgroundColor: kellyPercentage < 0 ? '#fef2f2' : kellyPercentage > 25 ? '#fef3c7' : '#dcfce7',
-          border: `2px solid ${kellyPercentage < 0 ? '#ef4444' : kellyPercentage > 25 ? '#f59e0b' : '#22c55e'}`,
-          borderRadius: '12px',
-          textAlign: 'center'
-        }}>
-          <h4 style={{ 
-            margin: '0 0 12px 0', 
-            color: kellyPercentage < 0 ? '#dc2626' : kellyPercentage > 25 ? '#d97706' : '#16a34a',
-            fontSize: '1.3rem'
-          }}>
+        <div className={`p-5 rounded-xl text-center border-2 ${
+          kellyPercentage < 0 
+            ? 'bg-red-50 dark:bg-red-900/30 border-red-500 dark:border-red-400' 
+            : kellyPercentage > 25 
+              ? 'bg-yellow-50 dark:bg-yellow-900/30 border-yellow-500 dark:border-yellow-400' 
+              : 'bg-green-50 dark:bg-green-900/30 border-green-500 dark:border-green-400'
+        }`}>
+          <h4 className={`m-0 mb-3 text-xl font-semibold ${
+            kellyPercentage < 0 
+              ? 'text-red-600 dark:text-red-400' 
+              : kellyPercentage > 25 
+                ? 'text-yellow-600 dark:text-yellow-400' 
+                : 'text-green-600 dark:text-green-400'
+          }`}>
             {kellyPercentage < 0 ? '🚫 投资建议' : '📈 建议仓位比例'}
           </h4>
           
-          <div style={{ 
-            fontSize: '2.2rem', 
-            fontWeight: 'bold',
-            color: kellyPercentage < 0 ? '#dc2626' : kellyPercentage > 25 ? '#d97706' : '#16a34a',
-            marginBottom: '12px'
-          }}>
+          <div className={`text-4xl font-bold mb-3 ${
+            kellyPercentage < 0 
+              ? 'text-red-600 dark:text-red-400' 
+              : kellyPercentage > 25 
+                ? 'text-yellow-600 dark:text-yellow-400' 
+                : 'text-green-600 dark:text-green-400'
+          }`}>
             {kellyPercentage < 0 ? '不建议投资' : `${kellyPercentage.toFixed(2)}%`}
           </div>
           
-          <div style={{
-            padding: '12px',
-            backgroundColor: 'rgba(255, 255, 255, 0.7)',
-            borderRadius: '8px',
-            marginBottom: '8px'
-          }}>
-            <p style={{ 
-              margin: 0, 
-              fontSize: '15px',
-              color: '#374151',
-              fontWeight: '500',
-              lineHeight: '1.5'
-            }}>
+          <div className="p-3 bg-white/70 dark:bg-gray-800/70 rounded-lg mb-2">
+            <p className="m-0 text-base text-gray-700 dark:text-gray-300 font-medium leading-6">
               {kellyPercentage < 0 
                 ? '❌ 凯利公式结果为负数，说明在当前胜率和盈亏比条件下，长期来看投资会亏损。建议：' 
                 : kellyPercentage > 25 
@@ -256,23 +162,11 @@ export function KellyCalculator() {
           </div>
           
           {kellyPercentage < 0 && (
-            <div style={{
-              padding: '12px',
-              backgroundColor: '#fee2e2',
-              borderRadius: '8px',
-              border: '1px solid #fca5a5'
-            }}>
-              <div style={{ fontSize: '14px', color: '#7f1d1d', fontWeight: '600', marginBottom: '8px' }}>
+            <div className="p-3 bg-red-100 dark:bg-red-900/40 rounded-lg border border-red-300 dark:border-red-600">
+              <div className="text-sm text-red-800 dark:text-red-300 font-semibold mb-2">
                 🔍 改进建议：
               </div>
-              <ul style={{ 
-                textAlign: 'left', 
-                fontSize: '13px', 
-                color: '#991b1b', 
-                margin: '0',
-                paddingLeft: '20px',
-                lineHeight: '1.6'
-              }}>
+              <ul className="text-left text-xs text-red-700 dark:text-red-300 m-0 pl-5 leading-relaxed">
                 <li>提高交易胜率（学习更好的分析方法）</li>
                 <li>改善盈亏比（及时止损，让利润奔跑）</li>
                 <li>寻找更好的投资机会</li>
@@ -282,29 +176,22 @@ export function KellyCalculator() {
           )}
           
           {kellyPercentage >= 0 && kellyPercentage <= 25 && (
-            <div style={{ fontSize: '13px', color: '#059669', fontWeight: '500' }}>
+            <div className="text-xs text-green-600 dark:text-green-400 font-medium">
               💡 这是一个相对安全的投资比例
             </div>
           )}
           
           {kellyPercentage > 25 && kellyPercentage > 0 && (
-            <div style={{ fontSize: '13px', color: '#d97706', fontWeight: '500' }}>
+            <div className="text-xs text-yellow-600 dark:text-yellow-400 font-medium">
               ⚠️ 高仓位意味着高风险，请谨慎考虑
             </div>
           )}
         </div>
       )}
       
-      <div style={{
-        marginTop: '20px',
-        padding: '12px',
-        backgroundColor: '#f8fafc',
-        borderRadius: '6px',
-        fontSize: '12px',
-        color: '#64748b'
-      }}>
-        <strong>凯利公式：</strong> f* = (bp - q) / b<br/>
-        <strong>其中：</strong> f* = 最优投资比例, b = 盈亏比, p = 胜率, q = 败率(1-p)
+      <div className="mt-5 p-3 bg-gray-100 dark:bg-gray-700 rounded-md text-xs text-gray-600 dark:text-gray-400">
+        <strong className="text-gray-800 dark:text-gray-200">凯利公式：</strong> f* = (bp - q) / b<br/>
+        <strong className="text-gray-800 dark:text-gray-200">其中：</strong> f* = 最优投资比例, b = 盈亏比, p = 胜率, q = 败率(1-p)
       </div>
     </div>
   );
