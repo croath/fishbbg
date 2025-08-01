@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { source } from '@/lib/source';
 import { FaYoutube, FaTelegram, FaDiscord } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { OrganizationStructuredData } from '@/components/StructuredData';
 
 // 获取所有视频
 async function getVideos() {
@@ -27,7 +28,9 @@ export default async function HomePage() {
   const featuredVideo = videos[0]; // 最新视频作为推荐
 
   return (
-    <main className="container mx-auto px-4 py-8 max-w-6xl">
+    <>
+      <OrganizationStructuredData />
+      <main className="container mx-auto px-4 py-8 max-w-6xl">
       {/* Hero Section - 推荐视频 */}
       <section className="mb-12">
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white">
@@ -207,5 +210,6 @@ export default async function HomePage() {
         </div>
       </div>
     </main>
+    </>
   );
 }

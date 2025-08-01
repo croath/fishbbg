@@ -30,8 +30,10 @@ nav a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"]:hover {
   background: #b91c1c !important;
 }
 
-section a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"]::before,
+/* 只为导航栏的 YouTube 按钮添加图标 */
 nav a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"]::before {
   content: "▶" !important;
   font-size: 14px !important;
 }
+
+
