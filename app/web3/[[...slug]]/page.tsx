@@ -8,6 +8,11 @@ import {
 import { notFound } from 'next/navigation';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { getMDXComponents } from '@/mdx-components';
+import { 
+  ArticleStructuredData, 
+  VideoStructuredData, 
+  BreadcrumbStructuredData 
+} from '@/components/StructuredData';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -17,20 +22,74 @@ export default async function Page(props: {
   if (!page) notFound();
 
   const MDXContent = page.data.body;
+  
+  // 构建面包屑导航数据
+  const breadcrumbItems = [
+    { name: '首页', url: '/' },
+    { name: 'Web3', url: '/web3' },
+  ];
+  
+  // 根据页面路径添加面包屑
+  if (params.slug && params.slug.length > 0) {
+    const segments = params.slug;
+    let currentPath = '/web3';
+    
+    segments.forEach((segment, index) => {
+      currentPath += `/${segment}`;
+      if (index === segments.length - 1) {
+        breadcrumbItems.push({ name: page.data.title, url: currentPath });
+      } else {
+        // 对于中间路径，可以从source中获取页面标题
+        const intermediatePage = source.getPage(segments.slice(0, index + 1));
+        breadcrumbItems.push({ 
+          name: intermediatePage?.data.title || segment, 
+          url: currentPath 
+        });
+      }
+    });
+  }
+
+  const isVideoContent = page.url?.includes('/videos/');
+  const hasDate = !!page.data.date;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
-      <DocsBody>
-        <MDXContent
-          components={getMDXComponents({
-            // this allows you to link to other pages with relative file paths
-            a: createRelativeLink(source, page),
-          })}
+    <>
+      {/* 面包屑结构化数据 */}
+      <BreadcrumbStructuredData items={breadcrumbItems} />
+      
+      {/* 根据内容类型添加对应的结构化数据 */}
+      {isVideoContent && page.data.image && hasDate && page.data.date ? (
+        <VideoStructuredData
+          title={page.data.title}
+          description={page.data.description || ''}
+          thumbnailUrl={page.data.image}
+          uploadDate={new Date(page.data.date).toISOString()}
+          embedUrl={`https://fishbbg.com${page.url}`}
         />
-      </DocsBody>
-    </DocsPage>
+      ) : hasDate && page.data.date ? (
+        <ArticleStructuredData
+          title={page.data.title}
+          description={page.data.description || ''}
+          datePublished={new Date(page.data.date).toISOString()}
+          keywords={page.data.keywords}
+          image={page.data.image}
+          url={page.url}
+        />
+      ) : null}
+      
+      <DocsPage toc={page.data.toc} full={page.data.full}>
+        <DocsTitle>{page.data.title}</DocsTitle>
+        <DocsDescription>{page.data.description}</DocsDescription>
+        <DocsBody>
+          <MDXContent
+            components={getMDXComponents({
+              // this allows you to link to other pages with relative file paths
+              a: createRelativeLink(source, page),
+            })}
+          />
+        </DocsBody>
+      </DocsPage>
+    </>
   );
 }
 

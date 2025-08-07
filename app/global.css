@@ -36,6 +36,49 @@ nav a[href="https://www.youtube.com/@fishbbg?sub_confirmation=1"]::before {
   font-size: 14px !important;
 }
 
+/* 修复导航链接对比度 - 重写 Fumadocs 导航样式 */
+[data-navbar] nav a:not([data-navbar-brand]):not(.youtube-link) {
+  color: #111827 !important;  /* 亮色模式：深灰色，高对比度 */
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+[data-navbar] nav a:not([data-navbar-brand]):not(.youtube-link):hover {
+  color: #000000 !important;  /* 亮色模式悬停：纯黑色 */
+}
+
+.dark [data-navbar] nav a:not([data-navbar-brand]):not(.youtube-link) {
+  color: #f3f4f6 !important;  /* 暗色模式：浅灰色，高对比度 */
+}
+
+.dark [data-navbar] nav a:not([data-navbar-brand]):not(.youtube-link):hover {
+  color: #ffffff !important;  /* 暗色模式悬停：纯白色 */
+}
+
+/* 备用方案：如果上面的选择器不起作用，使用更通用的方式 */
+nav a {
+  color: #111827 !important;
+  font-weight: 600 !important;
+}
+
+nav a:hover {
+  color: #000000 !important;
+}
+
+.dark nav a {
+  color: #f3f4f6 !important;
+}
+
+.dark nav a:hover {
+  color: #ffffff !important;
+}
+
+/* 确保 YouTube 链接不受影响 */
+nav a[href*="youtube.com"] {
+  background: #dc2626 !important;
+  color: white !important;
+}
+
 /* KellySimulation 夜间模式样式 */
 :root {
   --chart-grid-color: #e0e7ff;

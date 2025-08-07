@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { source } from '@/lib/source';
 import { FaYoutube, FaTelegram, FaDiscord, FaEnvelope } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { OrganizationStructuredData } from '@/components/StructuredData';
+import { OrganizationStructuredData, WebSiteStructuredData } from '@/components/StructuredData';
 import CopyEmailButton from '@/components/CopyEmailButton';
 import type { Metadata } from 'next';
 
@@ -77,6 +77,11 @@ export default async function HomePage() {
   return (
     <>
       <OrganizationStructuredData />
+      <WebSiteStructuredData
+        name="小鱼币币机"
+        url="https://fishbbg.com"
+        description="专业的Web3区块链内容频道，提供DeFi分析、加密货币投资策略、区块链技术解读"
+      />
       <main className="container mx-auto px-4 py-8 max-w-6xl">
       {/* Hero Section - 推荐视频 */}
       <section className="mb-12">

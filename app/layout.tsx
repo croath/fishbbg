@@ -58,6 +58,18 @@ export const metadata: Metadata = {
     icon: '/fishbbg.svg',
     shortcut: '/fishbbg.svg',
     apple: '/fishbbg.svg',
+    other: [
+      {
+        rel: 'icon',
+        url: '/fishbbg.svg',
+        type: 'image/svg+xml',
+      },
+      {
+        rel: 'icon',
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
   },
 };
 
