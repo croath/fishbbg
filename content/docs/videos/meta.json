@@ -3,9 +3,12 @@
   "icon": "fishbbg", 
   "defaultOpen": true,
   "pages": [
-    "what-is-solana-darkpool",
-    "what-is-stablecoin",
+    "crypto-make-a-million",
+    "crypto-quick-tips-shorts",
+    "kelly-criterion-answer",
+    "kelly-criterion",
     "tornado-cash-roman-storm-case",
-    "kelly-criterion"
+    "what-is-stablecoin",
+    "what-is-solana-darkpool"
   ]
 }
