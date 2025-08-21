@@ -4,8 +4,14 @@ description: 小鱼币币机的基本介绍
 keywords: 小鱼币币机,Web3,区块链,DeFi,加密货币,比特币,以太坊,数字资产,投资策略,币圈分析,区块链教育
 ---
 
-import { FaYoutube, FaTelegram, FaDiscord, FaEnvelope } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+import { FaYoutube, FaTelegram, FaDiscord, FaEnvelope, FaInstagram, FaWeixin, FaPodcast, FaVideo } from 'react-icons/fa';
+import { FaXTwitter, FaTiktok } from 'react-icons/fa6';
+import { 
+  XiaohongshuIcon, 
+  BilibiliIcon, 
+  BinanceIcon, 
+  XiaoyuzhouIcon 
+} from '@/components/SocialIcons';
 
 ## 小鱼币币机
 
@@ -38,5 +44,54 @@ import { FaXTwitter } from 'react-icons/fa6';
     <span>商务合作邮箱：business@fishbbg.com</span>
     <CopyEmailButton email="business@fishbbg.com" />
   </div>
+  </Card>
+  <Card 
+    title="哔哩哔哩" 
+    href="https://space.bilibili.com/3546938572016024"
+    icon={<BilibiliIcon className="text-pink-500" />}
+  >
+  小鱼币币机 bilibili B站频道。
+  </Card>
+  <Card 
+    title="小红书" 
+    href="https://www.xiaohongshu.com/user/profile/5ead00210000000001005654"
+    icon={<XiaohongshuIcon className="text-red-500" />}
+  >
+  小鱼币币机小红书账号，分享币圈生活与见解。
+  </Card>
+  <Card 
+    title="Instagram" 
+    href="https://www.instagram.com/fishbbgcrypto"
+    icon={<FaInstagram className="text-purple-600" />}
+  >
+  小鱼币币机 Instagram 账号。
+  </Card>
+  <Card 
+    title="币安广场" 
+    href="https://www.binance.com/square/profile/fishbbg"
+    icon={<BinanceIcon className="text-yellow-500" />}
+  >
+  小鱼币币机币安广场专栏，专业投资分析与策略分享。
+  </Card>
+  <Card 
+    title="抖音" 
+    href="https://v.douyin.com/F9guq8ikIjI/"
+    icon={<FaTiktok className="text-black dark:text-white" />}
+  >
+  小鱼币币机抖音短视频，一分钟了解币圈热点。
+  </Card>
+  <Card 
+    title="微信视频号" 
+    href="https://weixin.qq.com/sph/AcWKPJptO"
+    icon={<FaWeixin className="text-green-600" />}
+  >
+  小鱼币币机微信视频号，更贴近国内用户的内容分享。
+  </Card>
+  <Card 
+    title="小宇宙播客" 
+    href="https://www.xiaoyuzhoufm.com/podcast/68a2dc95f97ab192b5f6d0a6"
+    icon={<FaPodcast className="text-blue-500" />}
+  >
+  小鱼币币机播客频道，深度音频内容，随时随地收听。
   </Card>
 </Cards>
