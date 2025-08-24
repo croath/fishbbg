@@ -3,6 +3,7 @@ import type { MDXComponents } from 'mdx/types';
 import { KellyCalculator } from '@/components/KellyCalculator';
 import KellySimulation from '@/components/KellySimulation';
 import CopyEmailButton from '@/components/CopyEmailButton';
+import GaltonBoard from '@/components/GaltonBoard';
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -11,6 +12,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     KellyCalculator,
     KellySimulation,
     CopyEmailButton,
+    GaltonBoard,
     ...components,
   };
 }

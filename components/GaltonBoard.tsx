@@ -34,7 +34,7 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
 
   // 游戏状态
   const ballsRef = useRef<Ball[]>([]);
-  const binsRef = useRef<number[]>(new Array(15).fill(0));
+  const binsRef = useRef<number[]>(new Array(15).fill(0)); // 14列钉子对应15个槽
   const totalBallsRef = useRef(0);
   const dropCounterRef = useRef(0);
   const pegsRef = useRef<Peg[][]>([]);
@@ -54,12 +54,13 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
   const initPegs = useCallback(() => {
     const pegs: Peg[][] = [];
     const startY = 100;
-    const numCols = 14;
+    const numCols = 14; // 每行的钉子数（固定）
     const totalWidth = (numCols - 1) * config.pegSpacing;
     const baseStartX = (700 - totalWidth) / 2; // 画布宽度700
 
     for (let row = 0; row < config.rows; row++) {
       const rowPegs: Peg[] = [];
+      // 奇数行和偶数行错位半个间距（形成六边形排列）
       const offset = (row % 2) * (config.pegSpacing / 2);
       
       for (let col = 0; col < numCols; col++) {
@@ -87,7 +88,7 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
 
   // 绘制收集槽
   const drawBins = useCallback((ctx: CanvasRenderingContext2D) => {
-    const numBins = 15;
+    const numBins = 15; // 固定15个槽
     const binWidth = config.pegSpacing;
     const totalWidth = (numBins - 1) * binWidth;
     const startX = (700 - totalWidth) / 2 - binWidth/2;
@@ -104,10 +105,16 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
       ctx.stroke();
     }
 
-    // 绘制底部
+    // 绘制顶部横线
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(startX + numBins * binWidth, startY);
+    ctx.stroke();
+    
+    // 绘制底部横线
     ctx.beginPath();
     ctx.moveTo(startX, 480);
-    ctx.lineTo(startX + totalWidth, 480);
+    ctx.lineTo(startX + numBins * binWidth, 480);
     ctx.stroke();
 
     // 绘制直方图
@@ -151,7 +158,7 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
 
   // 绘制正态分布曲线
   const drawNormalCurve = useCallback((ctx: CanvasRenderingContext2D, startX: number, startY: number, binWidth: number, binHeight: number) => {
-    const mean = 7;
+    const mean = 7; // 中心在第7槽（0-14的中间）
     const stdDev = 2.5;
     const maxBalls = Math.max(...binsRef.current, 1);
     
@@ -164,8 +171,8 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
       const x = startX + i * binWidth + binWidth / 2;
       const z = (i - mean) / stdDev;
       const probability = Math.exp(-z * z / 2) / (stdDev * Math.sqrt(2 * Math.PI));
-      const expectedCount = probability * totalBallsRef.current * 0.8;
-      const height = (expectedCount / maxBalls) * (binHeight - 10);
+      const expectedCount = probability * totalBallsRef.current * 1.2;
+      const height = (expectedCount / maxBalls) * (binHeight - 10) * 0.95;
       const y = startY + binHeight - height;
       
       if (i === 0) {
@@ -220,14 +227,18 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
         if (distance < config.pegRadius + config.ballRadius) {
           ball.currentRow = row;
           
-          // 50%概率向左或向右
+          // 使用真正的随机方向，而不是基于碰撞位置
+          // 50%概率向左，50%概率向右
           if (Math.random() < 0.5) {
+            // 向左弹
             ball.vx = -2.5 - Math.random() * 1.5;
           } else {
+            // 向右弹
             ball.vx = 2.5 + Math.random() * 1.5;
             ball.rightCount++;
           }
           
+          // 减少垂直速度
           ball.vy *= 0.5;
           
           // 防止球卡在钉子里
@@ -246,7 +257,7 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
     if (ball.y >= bottomY) {
       ball.finished = true;
       
-      // 确定落入哪个槽
+      // 根据x位置确定落入哪个槽
       const numBins = 15;
       const binWidth = config.pegSpacing;
       const totalWidth = (numBins - 1) * binWidth;
@@ -374,7 +385,7 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
     }
     
     ballsRef.current = [];
-    binsRef.current = new Array(15).fill(0);
+    binsRef.current = new Array(15).fill(0); // 15个槽（钉子之间的通道）
     totalBallsRef.current = 0;
     dropCounterRef.current = 0;
     
@@ -417,9 +428,9 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
   }, [isRunning, animate]);
 
   return (
-    <div className={`bg-gradient-to-br from-slate-100 to-blue-100 rounded-xl p-6 shadow-lg ${className}`}>
-      <div className="text-center mb-4">
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">🎲 高尔顿钉板模拟器</h1>
+    <div className={`bg-white rounded-[20px] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.3)] max-w-4xl w-full mx-auto ${className}`}>
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-800 mb-3">🎲 高尔顿钉板模拟器</h1>
         <p className="text-sm text-gray-600">观察小球如何自然形成正态分布</p>
       </div>
       
@@ -427,29 +438,29 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
         ref={canvasRef}
         width={700}
         height={500}
-        className="block mx-auto border-2 border-gray-300 rounded-lg bg-gray-50"
+        className="block mx-auto border-2 border-gray-300 rounded-[10px] bg-gray-50"
       />
       
-      <div className="flex flex-wrap gap-3 justify-center mt-6">
+      <div className="flex flex-wrap gap-4 justify-center mt-6">
         <button
           onClick={startSimulation}
-          className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+          className="px-6 py-3 bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white rounded-lg font-semibold uppercase tracking-wide text-sm hover:shadow-[0_8px_20px_rgba(102,126,234,0.4)] hover:-translate-y-0.5 transition-all duration-300"
         >
           开始投球
         </button>
         <button
           onClick={stopSimulation}
-          className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+          className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold uppercase tracking-wide text-sm hover:bg-gray-300 transition-colors"
         >
           暂停
         </button>
         <button
           onClick={resetSimulation}
-          className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+          className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold uppercase tracking-wide text-sm hover:bg-gray-300 transition-colors"
         >
           重置
         </button>
-        <div className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-lg">
+        <div className="flex items-center gap-3 bg-gray-200 px-4 py-2 rounded-lg">
           <span className="text-sm text-gray-600">投球频率:</span>
           <input
             type="range"
@@ -457,32 +468,32 @@ export default function GaltonBoard({ className = "" }: GaltonBoardProps) {
             max="10"
             value={speed}
             onChange={(e) => setSpeed(Number(e.target.value))}
-            className="w-20"
+            className="w-30"
           />
         </div>
       </div>
       
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-        <div className="bg-gradient-to-br from-gray-50 to-gray-200 p-4 rounded-lg text-center">
-          <div className="text-xs text-gray-600 uppercase tracking-wide mb-1">已投球数</div>
-          <div className="text-xl font-bold text-gray-800">{ballCount}</div>
+        <div className="bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] p-4 rounded-[10px] text-center">
+          <div className="text-xs text-gray-600 uppercase tracking-wider mb-1">已投球数</div>
+          <div className="text-2xl font-bold text-gray-800">{ballCount}</div>
         </div>
-        <div className="bg-gradient-to-br from-gray-50 to-gray-200 p-4 rounded-lg text-center">
-          <div className="text-xs text-gray-600 uppercase tracking-wide mb-1">平均位置</div>
-          <div className="text-xl font-bold text-gray-800">{avgPosition}</div>
+        <div className="bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] p-4 rounded-[10px] text-center">
+          <div className="text-xs text-gray-600 uppercase tracking-wider mb-1">平均位置</div>
+          <div className="text-2xl font-bold text-gray-800">{avgPosition}</div>
         </div>
-        <div className="bg-gradient-to-br from-gray-50 to-gray-200 p-4 rounded-lg text-center">
-          <div className="text-xs text-gray-600 uppercase tracking-wide mb-1">标准差</div>
-          <div className="text-xl font-bold text-gray-800">{stdDev}</div>
+        <div className="bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] p-4 rounded-[10px] text-center">
+          <div className="text-xs text-gray-600 uppercase tracking-wider mb-1">标准差</div>
+          <div className="text-2xl font-bold text-gray-800">{stdDev}</div>
         </div>
-        <div className="bg-gradient-to-br from-gray-50 to-gray-200 p-4 rounded-lg text-center">
-          <div className="text-xs text-gray-600 uppercase tracking-wide mb-1">最高柱</div>
-          <div className="text-xl font-bold text-gray-800">{maxColumn}</div>
+        <div className="bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] p-4 rounded-[10px] text-center">
+          <div className="text-xs text-gray-600 uppercase tracking-wider mb-1">最高柱</div>
+          <div className="text-2xl font-bold text-gray-800">{maxColumn}</div>
         </div>
       </div>
       
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mt-6 rounded">
-        <p className="text-sm text-gray-700 leading-relaxed">
+      <div className="bg-[#e8f4fd] border-l-4 border-[#2196F3] p-4 mt-6 rounded-md">
+        <p className="text-sm text-gray-800 leading-relaxed">
           <strong>原理说明：</strong>小球从顶部落下，每次碰到钉子有50%概率向左或向右弹开。经过多层随机选择后，大部分小球会落在中间位置，形成钟形的正态分布曲线。这完美模拟了市场价格的分布规律：极端值少，中间值多。
         </p>
       </div>
