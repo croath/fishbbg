@@ -27,6 +27,17 @@ export default function MobilePersonalSidebar() {
       iconColor: 'text-black dark:text-white'
     },
     {
+      name: 'OKX Wallet',
+      href: 'https://web3.okx.com/ul/joindex?ref=FISHBBG',
+      icon: OKXIcon,
+      title: 'OKX 钱包',
+      description: '返佣20% + Web3钱包',
+      bgGradient: 'from-orange-50 to-amber-50 hover:from-orange-100 hover:to-amber-100',
+      darkBgGradient: 'dark:from-orange-900/20 dark:to-amber-900/20 dark:hover:from-orange-900/30 dark:hover:to-amber-900/30',
+      borderColor: 'border-orange-200 dark:border-orange-700',
+      iconColor: 'text-black dark:text-white'
+    },
+    {
       name: 'Bitget',
       href: 'https://www.bitget.com/zh-CN/referral/register?clacCode=90ALNAHU',
       icon: BitgetIcon,
