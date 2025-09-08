@@ -8,7 +8,8 @@ import {
   BinanceIcon,
   OKXIcon,
   BitgetIcon,
-  TradingViewIcon 
+  TradingViewIcon,
+  BybitIcon 
 } from '@/components/SocialIcons';
 import CopyEmailButton from '@/components/CopyEmailButton';
 
@@ -146,6 +147,22 @@ export default function PersonalSidebar() {
                 <div className="text-xs text-gray-600 dark:text-gray-400">全球领先加密交易所</div>
               </div>
               <div className="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full font-medium">
+                推荐
+              </div>
+            </Link>
+
+            <Link 
+              href="https://partner.bybit.com/b/FISHBBG"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-3 bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 dark:from-orange-900/20 dark:to-red-900/20 dark:hover:from-orange-900/30 dark:hover:to-red-900/30 rounded-lg transition-all group border border-orange-200 dark:border-orange-700"
+            >
+              <BybitIcon className="flex-shrink-0" size={18} />
+              <div className="flex-1">
+                <div className="text-sm font-medium text-gray-900 dark:text-white">Bybit</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400">全球领先衍生品交易所</div>
+              </div>
+              <div className="text-xs bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full font-medium">
                 推荐
               </div>
             </Link>

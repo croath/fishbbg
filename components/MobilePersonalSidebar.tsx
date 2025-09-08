@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { BinanceIcon, OKXIcon, BitgetIcon, TradingViewIcon } from '@/components/SocialIcons';
+import { BinanceIcon, OKXIcon, BitgetIcon, TradingViewIcon, BybitIcon } from '@/components/SocialIcons';
 
 export default function MobilePersonalSidebar() {
   const affiliateLinks = [
@@ -25,6 +25,17 @@ export default function MobilePersonalSidebar() {
       darkBgGradient: 'dark:from-blue-900/20 dark:to-cyan-900/20 dark:hover:from-blue-900/30 dark:hover:to-cyan-900/30',
       borderColor: 'border-blue-200 dark:border-blue-700',
       iconColor: 'text-black dark:text-white'
+    },
+    {
+      name: 'Bybit',
+      href: 'https://partner.bybit.com/b/FISHBBG',
+      icon: BybitIcon,
+      title: 'Bybit',
+      description: '全球领先衍生品交易所',
+      bgGradient: 'from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100',
+      darkBgGradient: 'dark:from-orange-900/20 dark:to-red-900/20 dark:hover:from-orange-900/30 dark:hover:to-red-900/30',
+      borderColor: 'border-orange-200 dark:border-orange-700',
+      iconColor: ''
     },
     {
       name: 'OKX Wallet',
