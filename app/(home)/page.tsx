@@ -10,7 +10,8 @@ import {
   OKXIcon,
   BitgetIcon,
   TradingViewIcon,
-  BybitIcon 
+  BybitIcon,
+  OneKeyIcon
 } from '@/components/SocialIcons';
 import { OrganizationStructuredData, WebSiteStructuredData } from '@/components/StructuredData';
 import CopyEmailButton from '@/components/CopyEmailButton';
@@ -291,6 +292,22 @@ export default async function HomePage() {
                   </div>
                   <div className="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full font-medium">
                     优惠
+                  </div>
+                </Link>
+
+                <Link 
+                  href="https://onekey.so/r/ATXWM9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-gradient-to-r from-emerald-50 to-green-50 hover:from-emerald-100 hover:to-green-100 dark:from-emerald-900/20 dark:to-green-900/20 dark:hover:from-emerald-900/30 dark:hover:to-green-900/30 rounded-lg transition-all group border border-emerald-200 dark:border-emerald-700"
+                >
+                  <OneKeyIcon className="flex-shrink-0" size={18} />
+                  <div className="flex-1">
+                    <div className="text-sm font-medium text-gray-900 dark:text-white">OneKey 硬件钱包</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">下单立减 $10</div>
+                  </div>
+                  <div className="text-xs bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 px-2 py-1 rounded-full font-medium">
+                    折扣
                   </div>
                 </Link>
               </div>

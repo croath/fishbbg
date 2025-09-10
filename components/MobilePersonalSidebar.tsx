@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { BinanceIcon, OKXIcon, BitgetIcon, TradingViewIcon, BybitIcon } from '@/components/SocialIcons';
+import { BinanceIcon, OKXIcon, BitgetIcon, TradingViewIcon, BybitIcon, OneKeyIcon } from '@/components/SocialIcons';
 
 export default function MobilePersonalSidebar() {
   const affiliateLinks = [
@@ -68,6 +68,17 @@ export default function MobilePersonalSidebar() {
       bgGradient: 'from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100',
       darkBgGradient: 'dark:from-indigo-900/20 dark:to-purple-900/20 dark:hover:from-indigo-900/30 dark:hover:to-purple-900/30',
       borderColor: 'border-indigo-200 dark:border-indigo-700',
+      iconColor: ''
+    },
+    {
+      name: 'OneKey',
+      href: 'https://onekey.so/r/ATXWM9',
+      icon: OneKeyIcon,
+      title: 'OneKey 硬件钱包',
+      description: '下单立减 $10',
+      bgGradient: 'from-emerald-50 to-green-50 hover:from-emerald-100 hover:to-green-100',
+      darkBgGradient: 'dark:from-emerald-900/20 dark:to-green-900/20 dark:hover:from-emerald-900/30 dark:hover:to-green-900/30',
+      borderColor: 'border-emerald-200 dark:border-emerald-700',
       iconColor: ''
     }
   ];
