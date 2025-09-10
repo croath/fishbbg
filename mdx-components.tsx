@@ -8,6 +8,8 @@ import MobilePersonalSidebar from '@/components/MobilePersonalSidebar';
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
+  // Access potential wrapper on default components with MDXComponents typing
+  const DefaultWrapper = (defaultMdxComponents as MDXComponents).wrapper;
   return {
     ...defaultMdxComponents,
     KellyCalculator,
@@ -22,13 +24,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
           <MobilePersonalSidebar />
         </div>
         
-        {defaultMdxComponents.wrapper ? (
-          <defaultMdxComponents.wrapper {...props}>
-            {children}
-          </defaultMdxComponents.wrapper>
-        ) : (
-          children
-        )}
+        {DefaultWrapper ? (
+          <DefaultWrapper {...(props as any)}>{children}</DefaultWrapper>
+        ) : children}
       </>
     ),
     ...components,
