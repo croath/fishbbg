@@ -1,9 +1,22 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface IconProps {
   size?: number;
   className?: string;
 }
+
+// 鱼鱼连线 AI 中转站图标
+export const YYLXIcon: React.FC<IconProps> = ({ size = 20, className = "" }) => (
+  <Image
+    src="/yylx.png"
+    width={size}
+    height={size}
+    alt="鱼鱼连线"
+    className={`${className} dark:invert`}
+    style={{ objectFit: 'contain' }}
+  />
+);
 
 // 小红书图标
 export const XiaohongshuIcon: React.FC<IconProps> = ({ size = 20, className = "" }) => (

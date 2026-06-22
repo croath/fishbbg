@@ -10,7 +10,8 @@ import {
   BitgetIcon,
   TradingViewIcon,
   BybitIcon,
-  OneKeyIcon
+  OneKeyIcon,
+  YYLXIcon
 } from '@/components/SocialIcons';
 import CopyEmailButton from '@/components/CopyEmailButton';
 
@@ -121,6 +122,38 @@ export default function PersonalSidebar() {
           <h4 className="text-sm font-semibold mb-3 text-gray-900 dark:text-white">🎁 优惠注册</h4>
           <div className="space-y-2">
             <Link 
+              href="https://app.yylx.io/register?aff=VIP005"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-50 to-cyan-50 hover:from-sky-100 hover:to-cyan-100 dark:from-sky-900/20 dark:to-cyan-900/20 dark:hover:from-sky-900/30 dark:hover:to-cyan-900/30 rounded-lg transition-all group border border-sky-200 dark:border-sky-700"
+            >
+              <YYLXIcon className="flex-shrink-0" size={18} />
+              <div className="flex-1">
+                <div className="text-sm font-medium text-gray-900 dark:text-white">鱼鱼连线 AI 中转站</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400">Claude/GPT API 中转 · 稳定低价</div>
+              </div>
+              <div className="text-xs bg-sky-100 dark:bg-sky-900/50 text-sky-800 dark:text-sky-200 px-2 py-1 rounded-full font-medium">
+                推荐
+              </div>
+            </Link>
+
+            <Link 
+              href="https://onekey.so/r/ATXWM9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-3 bg-gradient-to-r from-emerald-50 to-green-50 hover:from-emerald-100 hover:to-green-100 dark:from-emerald-900/20 dark:to-green-900/20 dark:hover:from-emerald-900/30 dark:hover:to-green-900/30 rounded-lg transition-all group border border-emerald-200 dark:border-emerald-700"
+            >
+              <OneKeyIcon className="flex-shrink-0" size={18} />
+              <div className="flex-1">
+                <div className="text-sm font-medium text-gray-900 dark:text-white">OneKey 硬件钱包</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400">下单立减 $10</div>
+              </div>
+              <div className="text-xs bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 px-2 py-1 rounded-full font-medium">
+                折扣
+              </div>
+            </Link>
+
+            <Link 
               href="https://accounts.maxweb.cc/register?ref=B93ZC80D"
               target="_blank"
               rel="noopener noreferrer"
@@ -148,22 +181,6 @@ export default function PersonalSidebar() {
                 <div className="text-xs text-gray-600 dark:text-gray-400">全球领先加密交易所</div>
               </div>
               <div className="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full font-medium">
-                推荐
-              </div>
-            </Link>
-
-            <Link 
-              href="https://partner.bybit.com/b/FISHBBG"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 p-3 bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 dark:from-orange-900/20 dark:to-red-900/20 dark:hover:from-orange-900/30 dark:hover:to-red-900/30 rounded-lg transition-all group border border-orange-200 dark:border-orange-700"
-            >
-              <BybitIcon className="flex-shrink-0" size={18} />
-              <div className="flex-1">
-                <div className="text-sm font-medium text-gray-900 dark:text-white">Bybit</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">全球领先衍生品交易所</div>
-              </div>
-              <div className="text-xs bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full font-medium">
                 推荐
               </div>
             </Link>
@@ -217,18 +234,18 @@ export default function PersonalSidebar() {
             </Link>
 
             <Link 
-              href="https://onekey.so/r/ATXWM9"
+              href="https://partner.bybit.com/b/FISHBBG"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-3 bg-gradient-to-r from-emerald-50 to-green-50 hover:from-emerald-100 hover:to-green-100 dark:from-emerald-900/20 dark:to-green-900/20 dark:hover:from-emerald-900/30 dark:hover:to-green-900/30 rounded-lg transition-all group border border-emerald-200 dark:border-emerald-700"
+              className="flex items-center gap-3 p-3 bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 dark:from-orange-900/20 dark:to-red-900/20 dark:hover:from-orange-900/30 dark:hover:to-red-900/30 rounded-lg transition-all group border border-orange-200 dark:border-orange-700"
             >
-              <OneKeyIcon className="flex-shrink-0" size={18} />
+              <BybitIcon className="flex-shrink-0" size={18} />
               <div className="flex-1">
-                <div className="text-sm font-medium text-gray-900 dark:text-white">OneKey 硬件钱包</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">下单立减 $10</div>
+                <div className="text-sm font-medium text-gray-900 dark:text-white">Bybit</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400">全球领先衍生品交易所</div>
               </div>
-              <div className="text-xs bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 px-2 py-1 rounded-full font-medium">
-                折扣
+              <div className="text-xs bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full font-medium">
+                推荐
               </div>
             </Link>
           </div>

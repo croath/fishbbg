@@ -1,9 +1,31 @@
 import React from 'react';
 import Link from 'next/link';
-import { BinanceIcon, OKXIcon, BitgetIcon, TradingViewIcon, BybitIcon, OneKeyIcon } from '@/components/SocialIcons';
+import { BinanceIcon, OKXIcon, BitgetIcon, TradingViewIcon, BybitIcon, OneKeyIcon, YYLXIcon } from '@/components/SocialIcons';
 
 export default function MobilePersonalSidebar() {
   const affiliateLinks = [
+    {
+      name: 'YYLX',
+      href: 'https://app.yylx.io/register?aff=VIP005',
+      icon: YYLXIcon,
+      title: '鱼鱼连线 AI 中转站',
+      description: 'Claude/GPT API 中转 · 稳定低价',
+      bgGradient: 'from-sky-50 to-cyan-50 hover:from-sky-100 hover:to-cyan-100',
+      darkBgGradient: 'dark:from-sky-900/20 dark:to-cyan-900/20 dark:hover:from-sky-900/30 dark:hover:to-cyan-900/30',
+      borderColor: 'border-sky-200 dark:border-sky-700',
+      iconColor: ''
+    },
+    {
+      name: 'OneKey',
+      href: 'https://onekey.so/r/ATXWM9',
+      icon: OneKeyIcon,
+      title: 'OneKey 硬件钱包',
+      description: '下单立减 $10',
+      bgGradient: 'from-emerald-50 to-green-50 hover:from-emerald-100 hover:to-green-100',
+      darkBgGradient: 'dark:from-emerald-900/20 dark:to-green-900/20 dark:hover:from-emerald-900/30 dark:hover:to-green-900/30',
+      borderColor: 'border-emerald-200 dark:border-emerald-700',
+      iconColor: ''
+    },
     {
       name: 'Binance',
       href: 'https://accounts.maxweb.cc/register?ref=B93ZC80D',
@@ -25,17 +47,6 @@ export default function MobilePersonalSidebar() {
       darkBgGradient: 'dark:from-blue-900/20 dark:to-cyan-900/20 dark:hover:from-blue-900/30 dark:hover:to-cyan-900/30',
       borderColor: 'border-blue-200 dark:border-blue-700',
       iconColor: 'text-black dark:text-white'
-    },
-    {
-      name: 'Bybit',
-      href: 'https://partner.bybit.com/b/FISHBBG',
-      icon: BybitIcon,
-      title: 'Bybit',
-      description: '全球领先衍生品交易所',
-      bgGradient: 'from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100',
-      darkBgGradient: 'dark:from-orange-900/20 dark:to-red-900/20 dark:hover:from-orange-900/30 dark:hover:to-red-900/30',
-      borderColor: 'border-orange-200 dark:border-orange-700',
-      iconColor: ''
     },
     {
       name: 'OKX Wallet',
@@ -71,14 +82,14 @@ export default function MobilePersonalSidebar() {
       iconColor: ''
     },
     {
-      name: 'OneKey',
-      href: 'https://onekey.so/r/ATXWM9',
-      icon: OneKeyIcon,
-      title: 'OneKey 硬件钱包',
-      description: '下单立减 $10',
-      bgGradient: 'from-emerald-50 to-green-50 hover:from-emerald-100 hover:to-green-100',
-      darkBgGradient: 'dark:from-emerald-900/20 dark:to-green-900/20 dark:hover:from-emerald-900/30 dark:hover:to-green-900/30',
-      borderColor: 'border-emerald-200 dark:border-emerald-700',
+      name: 'Bybit',
+      href: 'https://partner.bybit.com/b/FISHBBG',
+      icon: BybitIcon,
+      title: 'Bybit',
+      description: '全球领先衍生品交易所',
+      bgGradient: 'from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100',
+      darkBgGradient: 'dark:from-orange-900/20 dark:to-red-900/20 dark:hover:from-orange-900/30 dark:hover:to-red-900/30',
+      borderColor: 'border-orange-200 dark:border-orange-700',
       iconColor: ''
     }
   ];
